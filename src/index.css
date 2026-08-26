@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root {
+  /* BHIM Tri-Color Tokens */
+  --bhim-saffron: #FF671F;
+  --bhim-green: #046A38;
+  --bhim-navy: #06038D;
+  --bhim-teal: #008272;
+
+  /* Template Variable Overrides */
+  --accent: #FFFFFF;
+  --accent-bg: linear-gradient(135deg, #FF671F 0%, #046A38 100%);
+  --accent-border: #FF671F;
+  --border: #DCE5E0;
+  --text-h: #06038D;
+  --social-bg: #FFFFFF;
+  --shadow: 0 4px 14px rgba(4, 106, 56, 0.15);
+}
+
+@layer base {
+  body {
+    @apply bg-[#F4F7F6] text-[#1C1C1E] font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--bhim-navy);
+  }
+}
+
+@layer utilities {
+
+  /* BHIM Clean Glass Card */
+  .glass {
+    @apply bg-white/90 backdrop-blur-md border border-[#DCE5E0] shadow-sm;
+  }
+
+  /* Tricolor Gradient Utilities */
+  .bhim-gradient {
+    background: linear-gradient(135deg, #FF671F 0%, #046A38 100%);
+  }
+
+  .bhim-btn {
+    @apply text-white font-semibold px-4 py-2 rounded-lg shadow-md transition-all duration-200;
+    background: linear-gradient(135deg, #FF671F 0%, #046A38 100%);
+  }
+
+  .bhim-btn:hover {
+    @apply shadow-lg -translate-y-0.5;
+    border-color: var(--bhim-saffron);
+  }
+}
