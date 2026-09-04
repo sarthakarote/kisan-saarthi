@@ -11,8 +11,17 @@ import FarmerGroup from './pages/FarmerGroup';
 import DirectBuyers from './pages/DirectBuyers';
 import Profile from './pages/Profile';
 import DemoFlow from './pages/DemoFlow';
+import Login from './pages/Login';
+import { AuthProvider, useAuth } from './context/AuthContext';
 
-function App() {
+function MainApp() {
+  const { user, loading } = useAuth();
+
+  if (loading) return <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 text-agri-green">Loading...</div>;
+
+  if (!user) {
+    return <Login />;
+  }
   return (
     <BrowserRouter>
       <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100 transition-colors duration-200">
@@ -36,6 +45,14 @@ function App() {
         </div>
       </div>
     </BrowserRouter>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <MainApp />
+    </AuthProvider>
   );
 }
 

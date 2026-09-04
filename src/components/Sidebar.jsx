@@ -1,19 +1,28 @@
 import React from 'react';
 import { Home, Leaf, FlaskConical, TrendingUp, Users, ShoppingCart, User, HelpCircle, Settings } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-const navItems = [
+const farmerNavItems = [
   { name: 'Dashboard', path: '/', icon: Home },
   { name: 'Crop Advisory', path: '/crop-advisory', icon: Leaf },
   { name: 'Nutrient Analysis', path: '/nutrient-analysis', icon: FlaskConical },
   { name: 'Mandi Prices', path: '/mandi-prices', icon: TrendingUp },
-  { name: 'My Farmer Group', path: '/farmer-group', icon: Users },
-  { name: 'Direct Buyers', path: '/direct-buyers', icon: ShoppingCart },
+  { name: 'My Clusters', path: '/farmer-group', icon: Users },
+  { name: 'Profile', path: '/profile', icon: User },
+];
+
+const buyerNavItems = [
+  { name: 'Dashboard', path: '/', icon: Home },
+  { name: 'Browse Clusters', path: '/direct-buyers', icon: ShoppingCart },
   { name: 'Profile', path: '/profile', icon: User },
 ];
 
 export default function Sidebar() {
   const location = useLocation();
+  const { role } = useAuth();
+  
+  const navItems = role === 'buyer' ? buyerNavItems : farmerNavItems;
 
   return (
     <aside className="w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 hidden md:flex flex-col min-h-screen transition-colors duration-200">

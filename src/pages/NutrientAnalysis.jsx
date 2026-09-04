@@ -7,24 +7,24 @@ export default function NutrientAnalysis() {
   return (
     <div className="space-y-8 pb-12">
       <div className="max-w-3xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Nutrient Residue Analysis</h1>
-        <p className="text-gray-600 text-lg">Your previous crop and fertilizer history influence what you should grow next. We calculate the estimated remaining nutrients in your soil to make smarter recommendations.</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Nutrient Residue Analysis</h1>
+        <p className="text-gray-600 dark:text-gray-300 text-lg">Your previous crop and fertilizer history influence what you should grow next. We calculate the estimated remaining nutrients in your soil to make smarter recommendations.</p>
       </div>
 
-      <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm flex flex-col md:flex-row items-center gap-6 md:gap-12 justify-center">
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col md:flex-row items-center gap-6 md:gap-12 justify-center">
         <div className="text-center">
-          <p className="text-sm text-gray-500 font-medium uppercase tracking-wider mb-1">Previous Crop</p>
-          <div className="bg-gray-50 px-6 py-3 rounded-lg border border-gray-200 inline-block">
-            <span className="text-xl font-bold text-gray-800">{mockFarmerData.history.previousCrop}</span>
+          <p className="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider mb-1">Previous Crop</p>
+          <div className="bg-gray-50 dark:bg-gray-700 px-6 py-3 rounded-lg border border-gray-200 dark:border-gray-600 inline-block">
+            <span className="text-xl font-bold text-gray-800 dark:text-gray-100">{mockFarmerData.history.previousCrop}</span>
           </div>
         </div>
         <div className="text-gray-300">
           <ArrowDown className="w-8 h-8 md:-rotate-90" />
         </div>
         <div className="text-center">
-          <p className="text-sm text-gray-500 font-medium uppercase tracking-wider mb-1">Fertilizer Used</p>
-          <div className="bg-gray-50 px-6 py-3 rounded-lg border border-gray-200 inline-block">
-            <span className="text-xl font-bold text-gray-800">{mockFarmerData.history.previousFertilizer}</span>
+          <p className="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider mb-1">Fertilizer Used</p>
+          <div className="bg-gray-50 dark:bg-gray-700 px-6 py-3 rounded-lg border border-gray-200 dark:border-gray-600 inline-block">
+            <span className="text-xl font-bold text-gray-800 dark:text-gray-100">{mockFarmerData.history.previousFertilizer}</span>
           </div>
         </div>
       </div>
@@ -56,17 +56,17 @@ export default function NutrientAnalysis() {
         />
       </div>
 
-      <div className="bg-blue-50 border border-blue-100 rounded-xl p-6 flex gap-4 items-start">
-        <div className="p-2 bg-blue-100 rounded-lg text-blue-600 mt-1">
+      <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 rounded-xl p-6 flex gap-4 items-start">
+        <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg text-blue-600 dark:text-blue-400 mt-1">
           <Info className="w-6 h-6" />
         </div>
         <div>
-          <h3 className="text-lg font-bold text-blue-900 mb-2">How do we calculate this?</h3>
-          <p className="text-blue-800 text-sm leading-relaxed mb-4">
+          <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-2">How do we calculate this?</h3>
+          <p className="text-blue-800 dark:text-blue-200 text-sm leading-relaxed mb-4">
             Our ML model takes your initial soil test results and simulates the nutrient uptake by your previous crop ({mockFarmerData.history.previousCrop}). We then add the theoretical nutrient contribution of the fertilizers you applied ({mockFarmerData.history.previousFertilizer}) to estimate what's left in the soil right now.
           </p>
-          <div className="bg-white/60 p-4 rounded-lg inline-block">
-            <span className="font-mono text-sm font-semibold text-blue-900">
+          <div className="bg-white/60 dark:bg-gray-800/60 p-4 rounded-lg inline-block">
+            <span className="font-mono text-sm font-semibold text-blue-900 dark:text-blue-100">
               Estimated Remaining = Initial Soil Level - Crop Consumption + Fertilizer Added
             </span>
           </div>

@@ -17,16 +17,16 @@ export default function MandiPrices() {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Know Your Market Price</h1>
-          <p className="text-gray-600">Check mandi prices before you sell to ensure fair compensation.</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Know Your Market Price</h1>
+          <p className="text-gray-600 dark:text-gray-300">Check mandi prices before you sell to ensure fair compensation.</p>
         </div>
         
         <div className="flex gap-2">
           <div className="relative">
             <Search className="w-5 h-5 absolute left-3 top-2.5 text-gray-400" />
-            <input type="text" placeholder="Search crop or mandi..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-agri-green outline-none w-full md:w-64" />
+            <input type="text" placeholder="Search crop or mandi..." className="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-agri-green outline-none w-full md:w-64" />
           </div>
-          <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 bg-white shadow-sm font-medium">
+          <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 bg-white dark:bg-gray-800 shadow-sm font-medium">
             <Filter className="w-4 h-4" /> Filters
           </button>
         </div>
@@ -52,8 +52,8 @@ export default function MandiPrices() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 md:col-span-2 flex flex-col justify-center">
-          <h3 className="text-lg font-bold text-gray-900 mb-6">Price Trend Across Markets</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 md:col-span-2 flex flex-col justify-center">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">Price Trend Across Markets</h3>
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
@@ -72,55 +72,55 @@ export default function MandiPrices() {
       </div>
 
       {/* Trader Offer vs Mandi Price Section */}
-      <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 relative overflow-hidden">
+      <div className="bg-orange-50 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-800 rounded-xl p-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-4 opacity-10">
           <AlertTriangle className="w-32 h-32 text-orange-600" />
         </div>
         
         <div className="relative z-10">
-          <h2 className="text-xl font-bold text-orange-900 mb-4 flex items-center gap-2">
+          <h2 className="text-xl font-bold text-orange-900 dark:text-orange-100 mb-4 flex items-center gap-2">
             <AlertTriangle className="w-6 h-6" /> Trader Offer vs Mandi Price
           </h2>
           
-          <div className="flex flex-col md:flex-row gap-8 items-center bg-white p-6 rounded-lg shadow-sm border border-orange-100">
+          <div className="flex flex-col md:flex-row gap-8 items-center bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-orange-100 dark:border-gray-700">
             <div className="text-center flex-1">
-              <p className="text-sm text-gray-500 font-medium mb-1">Local Trader Offered</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Local Trader Offered</p>
               <p className="text-3xl font-bold text-red-600">₹{traderOffer}</p>
             </div>
             
-            <div className="text-gray-300 font-bold text-2xl hidden md:block">VS</div>
+            <div className="text-gray-300 dark:text-gray-600 font-bold text-2xl hidden md:block">VS</div>
             
             <div className="text-center flex-1">
-              <p className="text-sm text-gray-500 font-medium mb-1">Mandi Modal Price</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Mandi Modal Price</p>
               <p className="text-3xl font-bold text-agri-green">₹{mandiModal}</p>
             </div>
             
-            <div className="w-px h-16 bg-gray-200 hidden md:block"></div>
+            <div className="w-px h-16 bg-gray-200 dark:bg-gray-700 hidden md:block"></div>
             
             <div className="text-center flex-1">
-              <p className="text-sm text-gray-500 font-medium mb-1">Difference</p>
-              <p className="text-3xl font-bold text-gray-900">₹{diff}/qtl</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">Difference</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-white">₹{diff}/qtl</p>
             </div>
           </div>
           
           <div className="mt-4 text-center">
-            <p className="text-orange-800 font-medium text-lg">
+            <p className="text-orange-800 dark:text-orange-200 font-medium text-lg">
               You could lose <span className="font-bold text-red-600">₹{diff} per quintal</span> by accepting the local trader's offer without checking mandi prices!
             </p>
           </div>
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="p-4 border-b border-gray-100 bg-gray-50 flex justify-between items-center">
-          <h3 className="font-bold text-gray-900">Live Mandi Prices</h3>
-          <span className="text-xs text-gray-500 flex items-center gap-1">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+        <div className="p-4 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 flex justify-between items-center">
+          <h3 className="font-bold text-gray-900 dark:text-white">Live Mandi Prices</h3>
+          <span className="text-xs text-gray-500 dark:text-gray-300 flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-green-500"></span> Live Updates
           </span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
-            <thead className="bg-white text-gray-500 font-medium border-b border-gray-200">
+            <thead className="bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 font-medium border-b border-gray-200 dark:border-gray-700">
               <tr>
                 <th className="px-6 py-4">Crop</th>
                 <th className="px-6 py-4">Market</th>
@@ -130,10 +130,10 @@ export default function MandiPrices() {
                 <th className="px-6 py-4">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100 text-gray-700">
+            <tbody className="divide-y divide-gray-100 dark:divide-gray-700 text-gray-700 dark:text-gray-300">
               {mockMandiPrices.map((item, idx) => (
-                <tr key={idx} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 font-semibold text-gray-900">{item.crop}</td>
+                <tr key={idx} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">{item.crop}</td>
                   <td className="px-6 py-4">{item.market}</td>
                   <td className="px-6 py-4">₹{parseInt(item.price.replace('₹', '').replace(',', '')) - 200}</td>
                   <td className="px-6 py-4">₹{parseInt(item.price.replace('₹', '').replace(',', '')) + 300}</td>

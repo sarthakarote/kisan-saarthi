@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, MapPin, Menu, X, Moon, Sun } from 'lucide-react';
-import { mockFarmerData } from '../data/mockData';
+import { Bell, MapPin, Menu, X, Moon, Sun, LogOut } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 export default function Navbar() {
   const [demoMode, setDemoMode] = useState(true);
   const [isDark, setIsDark] = useState(false);
+  const { user, role, logout } = useAuth();
 
   useEffect(() => {
     if (isDark) {
@@ -30,7 +31,7 @@ export default function Navbar() {
           <span className="text-sm text-gray-500 font-medium">Current Location</span>
           <div className="flex items-center text-agri-green font-medium text-sm gap-1">
             <MapPin className="w-4 h-4" />
-            {mockFarmerData.location.village}, {mockFarmerData.location.district}
+            {role === 'farmer' ? `${user?.village}, Maharashtra` : user?.location || 'Mumbai, Maharashtra'}
           </div>
         </div>
 
@@ -63,13 +64,21 @@ export default function Navbar() {
           
           <div className="flex items-center gap-2 ml-2 pl-4 border-l border-gray-200 dark:border-gray-700">
             <div className="w-8 h-8 rounded-full bg-agri-green flex items-center justify-center text-white font-bold">
-              {mockFarmerData.name.charAt(0)}
+              {user?.name?.charAt(0) || 'U'}
             </div>
             <div className="hidden sm:block">
-              <p className="text-sm font-semibold text-gray-900 dark:text-white leading-tight">{mockFarmerData.name}</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">{mockFarmerData.location.state}</p>
+              <p className="text-sm font-semibold text-gray-900 dark:text-white leading-tight">{user?.name}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 capitalize">{role}</p>
             </div>
           </div>
+          
+          <button 
+            onClick={logout}
+            className="p-2 ml-2 text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+            title="Log out"
+          >
+            <LogOut className="w-5 h-5" />
+          </button>
         </div>
       </div>
     </header>

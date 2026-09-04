@@ -38,7 +38,6 @@ export default function JourneyFlow() {
               {index < steps.length - 1 && (
                 <div className="flex-1 px-4 flex items-center justify-center">
                   <div className={`h-1 w-full rounded-full ${step.active && steps[index+1].active ? 'bg-agri-green' : 'bg-gray-200 dark:bg-gray-700'}`}></div>
-                  <ArrowRight className={`absolute w-5 h-5 ${step.active && steps[index+1].active ? 'text-agri-green' : 'text-gray-300 dark:text-gray-600'}`} />
                 </div>
               )}
             </React.Fragment>
